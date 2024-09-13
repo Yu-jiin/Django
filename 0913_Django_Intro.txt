@@ -1,8 +1,41 @@
 가상환경
     - Python 애플리케이션과 그에 따른 패키지들을 격리하여 관리할 수 있는 독립적인 실행 환경
 
-가상환경 만들기 git bash
-1. 아무 폴더 만들고
-2. python -m venv venv              (venv는 관례적으로 사용되는 가상환경 이름)
-3. source venv/Scripts/activate     (가상환경 on)
+    패키지 목록이 필요한 이유
+        - 두 명의 개발자가 같은 패키지버전을 사용해야 함.
 
+    의존성 패키지 
+        - 서로 다른 패키지임에도 같이 존재해야 하는 패키지도 있고,
+        - 그 패키지들이 호환되야하고... 아무튼 개락 복잡함 
+
+    가상환경 만들기 git bash
+    1. 아무 폴더 만들고
+    2. python -m venv venv              (venv는 관례적으로 사용되는 가상환경 이름)
+    3. source venv/Scripts/activate     (가상환경 on)
+    (운영체제마다 조금씩 달라서 macOS = source venv/bin/activate)
+    4. pip freeze > requirements.txt    (txt파일이 만들어짐)
+        - txt파일에 각 패키지 버전 적어서 공유 !! 
+    5. pip install -r requirements.txt  (txt파일의 패키지 버전 한방에 설치갈비)
+    6. deactivate                       (가상환경 끄기 // 그냥 꺼도 되긴 함)
+
+    가상환경 주의사항
+    1. 파이썬을 on/off로 전환
+    2. venv폴더는 gitignore에 작성되어 원격 저장소에 공유 X
+    3. 프로젝트마다 별도의 가상환경 사용 
+    4. 이름은 그냥 venv로.. 다른거 쓰지마 
+
+    django-admin startproject firstpjt .    (프젝 만들고)
+    python manage.py runserver              (서버 실행)
+    ctrl + c = 서버 종료 !! 
+
+
+Django Design Pattern
+디자인패턴
+    - SW설계에서 발생하는 문제를 해결하기 위한 일반적인 해결책
+        (애플리케이션 구조는 이렇게 구성하자 라는 관행)
+
+MVC 디자인 패턴 (Model, View, Controller) - 대표적인 패턴    
+MTV 디자인 패턴 (Model, Template, View) - Django 구조화하는 패턴
+    - 기존 MVC와 동일하나 단순 명칭을 다르게 정의 
+
+test
