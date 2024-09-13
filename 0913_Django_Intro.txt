@@ -27,7 +27,18 @@
     django-admin startproject firstpjt .    (프젝 만들고)
     python manage.py runserver              (서버 실행)
     ctrl + c = 서버 종료 !! 
-
+    python manage.py startapp articles      (앱 실행, 이름은 복수형으로)
+    앱 생성하고 등록해야함 .. !!!
+    settings.py에 
+        INSTALLED_APPS = [
+        'articles',     // 이거 등록해줘야함
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+    ]
 
 Django Design Pattern
 디자인패턴
@@ -38,4 +49,15 @@ MVC 디자인 패턴 (Model, View, Controller) - 대표적인 패턴
 MTV 디자인 패턴 (Model, Template, View) - Django 구조화하는 패턴
     - 기존 MVC와 동일하나 단순 명칭을 다르게 정의 
 
-test
+요청 -> urls.py -> views.py -> templates
+
+articles/templates 폴더 꼬옥 만들기 ... !! 
+
+
+최종 == 
+가상환경 생성 루틴
+python -m venv venv
+sorce venv/Scripts/activate
+pip install django
+pip freeze > requirements.txt
+(git add 전 gitignore 생성 -> git 생성)
