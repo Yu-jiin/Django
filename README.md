@@ -34,3 +34,25 @@ $ python manage.py runserver
 # 서버 끄기
 $ ctrl + c
 ```
+
+---
+
+3. 앱 생성 및 등록
+
+```bash
+# 가능하지만 쓰지 않는다.
+# $ django-admin startapp my_app
+
+# 1. 앱 생성 -> 등록
+$ python manage.py startapp my_app
+
+
+```
+
+> 프로젝트는 프로젝트 생성 명령어로 만듬
+
+- 이때 app은 없었음
+  > 그러고, 추가로 app 생성함
+- 이건.. 프로젝트랑 완전 별개 폴더이다.
+  > 프로젝트가 방금 만들어진 app의 존재를 알리가 없음 .
+  > settings.py의 INSTALLED_APPS에 'my_app' 등록해야함 !!!
