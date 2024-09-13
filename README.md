@@ -1,6 +1,6 @@
 Django
 
-# django 시작하기
+1. django 시작하기
 
 ```bash
 # 1. 프로젝트 시작하자마자 gitignore 생성하기
@@ -21,5 +21,16 @@ $ pip install django
 # 5. 현재 버전을 다음에도 똑같이 유지하기위해 기록
 $ pip freeze > requirements.txt
 
+```
 
+2. django 프로젝트 생성하기
+
+```bash
+$ django-admin startproject my_pjt .
+
+
+# 서버 켜기
+$ python manage.py runserver
+# 서버 끄기
+$ ctrl + c
 ```
