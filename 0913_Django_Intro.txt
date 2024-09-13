@@ -1,0 +1,8 @@
+가상환경
+    - Python 애플리케이션과 그에 따른 패키지들을 격리하여 관리할 수 있는 독립적인 실행 환경
+
+가상환경 만들기 git bash
+1. 아무 폴더 만들고
+2. python -m venv venv              (venv는 관례적으로 사용되는 가상환경 이름)
+3. source venv/Scripts/activate     (가상환경 on)
+
