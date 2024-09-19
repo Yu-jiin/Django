@@ -67,3 +67,4 @@ pip freeze > requirements.txt
 urls.py에서 각 url 문자열 경로는 반드시 /로 끝
 view함수는 첫번째 인자로 요청객체를 받고 반드시 request로
 django는 특정경로의 templates 파일만 읽어옴 
+
