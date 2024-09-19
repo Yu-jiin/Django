@@ -41,3 +41,12 @@ url -> view -> templates
 
 요청과 응답의 개념 
 페이지 이동 X !!!
+  form 태그
+    action & method = form 핵심속성
+    어디로   어떤방식 ?
+    
+    input = 입력받는 속성
+      name 이 핵심 = key의 역할
+
+  ex) https://search.naver.com/search.naver?key=value
+

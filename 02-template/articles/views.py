@@ -21,3 +21,23 @@ def dinner(request):
         'picked' : picked,
     }
     return render(request, 'articles/dinner.html', context)
+
+def search(request):
+
+    return render(request, 'articles/search.html')
+
+def throw(request):
+    return render(request, 'articles/throw.html')
+
+def catch(request):
+    message = request.GET.get('message')
+    context = {
+        'message' : message
+    }
+    return render(request, 'articles/catch.html', context)
+
+def greeting(request, name):
+    context = {
+        'name' : name,
+    }
+    return render(request, 'articles/greeting.html', context)
