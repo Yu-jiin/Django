@@ -1,0 +1,43 @@
+Django Template System
+  - 사용자의 표현을 담당
+
+Django Template Language
+  - 조건, 반복, 변수등의 프로그래밍적 기능 제공 
+
+DTL Syntax
+  - Variable
+    = render 함수 세번째 인자로 딕셔너리 사용 
+    = key에 해당하는 문자열이 사용가능한 변수명 
+      ex) {{variable}}   {{variable.attribute}}
+        . 도트로 변수 속성 접근가능 
+
+  - Filters
+    = 변수뒤에 | 
+    = 60 개의 built-in templates filters를 제공 장고 DTL 검색해서 봐
+    = 연결이 가능함 
+      ex) {{name|truncatewords:30}} = 이름을 30자로 잘라서 출력
+
+  - Tags
+    = 반복 논리 수행.. 일부는 시작과 종료태그 필요 
+      ex) {% tag %}
+      ex) {% if %} {% endif %}
+
+  - Comments 주석
+    ex) {# #} or {% comment %} {% endcomment %}
+
+
+딕셔너리 view에서 사용할라면 {{name}}
+
+url -> view -> templates
+
+  block tag
+    - 재정의 할 수 있는 블록 정의 
+    {% block content %}  content 와 같은 이름 반드시 필요 
+      <h1>
+        안녕하세요! {{name}}
+      </h1>
+    {% endblock content %}
+
+
+요청과 응답의 개념 
+페이지 이동 X !!!
