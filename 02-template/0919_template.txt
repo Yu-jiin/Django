@@ -50,3 +50,4 @@ url -> view -> templates
 
   ex) https://search.naver.com/search.naver?key=value
 
+
