@@ -38,3 +38,14 @@ model class 에 변경사항이 생겼다면
 반드시 새로운 설계도 생성 후
 DB에 반영 
 이전 설계도를 지우는 건 XX 
+
+python manage.py createsuperuser == 관리자 생성 계정
+
+DB 초기화
+migration 파일 삭제
+db.sqlite3 파일 삭제
+
+python manage.py showmigrations 
+- migrations 파일들이 migrate가 됐는지 아닌지 여부 확인 X가 체크 의미 
+python manage.py sqlmigrate articles 0001 
+- 어떻게 번역되어 DB에 전달되는지 확인  
