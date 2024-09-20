@@ -1,3 +1,9 @@
 MODEL
 
 id 컬럼은 Django가 자동생성
+
+Model 부모 클래스 상속 필수 .. ~~
+class Article(models.Model):
+  title = models.CharField(max_length=10)
+  content = models.TextField()
+  
