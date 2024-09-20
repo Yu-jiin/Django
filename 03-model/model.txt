@@ -7,3 +7,26 @@ class Article(models.Model):
   title = models.CharField(max_length=10)
   content = models.TextField()
   
+  title이랑 content 는  필드 명 
+  CharField. TextField 는 데이터 유형,
+  max_length = 10 은 제약 조건 
+  즉 DB테이블의 열(필드) 정의하며, 데이터타입과 제약조건 정의
+
+  숫자 - IntegerField, FloatField
+  Django Documentation 들어가ㅏ 버전을 4.2 로 바꾸고 봐라 !
+
+  - CharField       제한된 길이의 문자열을 저장 | max_length 는 필수 옵션
+  - TextField       길이 제한 없는 대용량 텍스트 | 무한대는 아님 
+  - Field Options   필드 "동작" "제약조건" 정의
+      - null        NULL 값 기본 False
+      - blank       form에서 빈 값 허용할지 여부 결정 기본 False
+      - default     필드의 기본값 설정 
+  - BigAutoField    id 속성값 자동으로 순번 매겨줌 
+  
+
+Migrations - model클래스의 변경사항을 DB에 최종 반영
+  1. model class 설계도 초안
+            | python manage.py makemigrations
+  2. migration   최종설계도
+            | python manage.py migrate
+  3. dq.sqlite3  DB
