@@ -22,6 +22,9 @@ class Article(models.Model):
       - blank       form에서 빈 값 허용할지 여부 결정 기본 False
       - default     필드의 기본값 설정 
   - BigAutoField    id 속성값 자동으로 순번 매겨줌 
+  - DateTimeField   날짜
+      -auto_now     저장될 때마다 자동 현재 날짜시간 저장
+      -auto_now_add 처음 생성될 때만 자동 현재 날짜시간 저장
   
 
 Migrations - model클래스의 변경사항을 DB에 최종 반영
@@ -30,3 +33,8 @@ Migrations - model클래스의 변경사항을 DB에 최종 반영
   2. migration   최종설계도
             | python manage.py migrate
   3. dq.sqlite3  DB
+
+model class 에 변경사항이 생겼다면
+반드시 새로운 설계도 생성 후
+DB에 반영 
+이전 설계도를 지우는 건 XX 
