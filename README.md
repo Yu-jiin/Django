@@ -49,6 +49,8 @@ $ python manage.py startapp my_app
 
 ```
 
+
+
 > 프로젝트는 프로젝트 생성 명령어로 만듬
 
 - 이때 app은 없었음
