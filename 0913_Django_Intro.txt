@@ -68,7 +68,7 @@ urls.py에서 각 url 문자열 경로는 반드시 /로 끝
 view함수는 첫번째 인자로 요청객체를 받고 반드시 request로
 django는 특정경로의 templates 파일만 읽어옴 
 
-
+---------------------------------------------------------------------------
 
 Django Template System
   - 사용자의 표현을 담당
@@ -174,3 +174,28 @@ python manage.py showmigrations
 - migrations 파일들이 migrate가 됐는지 아닌지 여부 확인 X가 체크 의미 
 python manage.py sqlmigrate articles 0001 
 - 어떻게 번역되어 DB에 전달되는지 확인  
+
+---------------------------------------------------------------------------
+
+pip install ipython - 파이썬 더 쉽게 하게끔 도와주는 
+pip install django-extensions - DB할라면 이거 꼭 설치
+
+ORM - 객체지향 프로그래밍 언어를 사용하여 호환되지 않는 유형간의 시스템간 데이터 변환 기술 
+
+Article.objects.all()       - QuerySet API 구문
+    |      |      |
+   Model manager QuertSetAPI
+
+Query   - 특정한 데이터를 보여달라는 요청
+        - '쿼리문' 작성 
+
+QuerySet    - DB에게서 전달받은 객체 목록 (순회가능한 1개 이상의 데이터)
+            - Django ORM을 통해 만들어진 자료형
+            - DB가 단일객체를 반환시, QuerySet이 아닌 모델 Class 의 인스턴스로 반환
+
+QuerySet API    - DB의 데이터를 저장 조회 수정 삭제 하는 것 CRUD 
+                - Create Read Update Delete
+
+
+    1. CREATE 생성 
+
