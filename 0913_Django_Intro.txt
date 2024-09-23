@@ -296,3 +296,4 @@ QuerySet API    - DB의 데이터를 저장 조회 수정 삭제 하는 것 CRUD
 django queryset api 구글에 이거 치고 맨 상단 두개의 공식문서 확인 
 
 Field lookups - gt 이상, gte 초과, lt 이하, lte 미만, contains, startswith
+
