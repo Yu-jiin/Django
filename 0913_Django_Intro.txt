@@ -68,3 +68,109 @@ urls.py에서 각 url 문자열 경로는 반드시 /로 끝
 view함수는 첫번째 인자로 요청객체를 받고 반드시 request로
 django는 특정경로의 templates 파일만 읽어옴 
 
+
+
+Django Template System
+  - 사용자의 표현을 담당
+
+Django Template Language
+  - 조건, 반복, 변수등의 프로그래밍적 기능 제공 
+
+DTL Syntax
+  - Variable
+    = render 함수 세번째 인자로 딕셔너리 사용 
+    = key에 해당하는 문자열이 사용가능한 변수명 
+      ex) {{variable}}   {{variable.attribute}}
+        . 도트로 변수 속성 접근가능 
+
+  - Filters
+    = 변수뒤에 | 
+    = 60 개의 built-in templates filters를 제공 장고 DTL 검색해서 봐
+    = 연결이 가능함 
+      ex) {{name|truncatewords:30}} = 이름을 30자로 잘라서 출력
+
+  - Tags
+    = 반복 논리 수행.. 일부는 시작과 종료태그 필요 
+      ex) {% tag %}
+      ex) {% if %} {% endif %}
+
+  - Comments 주석
+    ex) {# #} or {% comment %} {% endcomment %}
+
+
+딕셔너리 view에서 사용할라면 {{name}}
+
+url -> view -> templates
+
+  block tag
+    - 재정의 할 수 있는 블록 정의 
+    {% block content %}  content 와 같은 이름 반드시 필요 
+      <h1>
+        안녕하세요! {{name}}
+      </h1>
+    {% endblock content %}
+
+
+요청과 응답의 개념 
+페이지 이동 X !!!
+  form 태그
+    action & method = form 핵심속성
+    어디로   어떤방식 ?
+    
+    input = 입력받는 속성
+      name 이 핵심 = key의 역할
+
+  ex) https://search.naver.com/search.naver?key=value
+
+
+MODEL
+
+id 컬럼은 Django가 자동생성
+
+Model 부모 클래스 상속 필수 .. ~~
+class Article(models.Model):
+  title = models.CharField(max_length=10)
+  content = models.TextField()
+  
+  title이랑 content 는  필드 명 
+  CharField. TextField 는 데이터 유형,
+  max_length = 10 은 제약 조건 
+  즉 DB테이블의 열(필드) 정의하며, 데이터타입과 제약조건 정의
+
+  숫자 - IntegerField, FloatField
+  Django Documentation 들어가ㅏ 버전을 4.2 로 바꾸고 봐라 !
+
+  - CharField       제한된 길이의 문자열을 저장 | max_length 는 필수 옵션
+  - TextField       길이 제한 없는 대용량 텍스트 | 무한대는 아님 
+  - Field Options   필드 "동작" "제약조건" 정의
+      - null        NULL 값 기본 False
+      - blank       form에서 빈 값 허용할지 여부 결정 기본 False
+      - default     필드의 기본값 설정 
+  - BigAutoField    id 속성값 자동으로 순번 매겨줌 
+  - DateTimeField   날짜
+      -auto_now     저장될 때마다 자동 현재 날짜시간 저장
+      -auto_now_add 처음 생성될 때만 자동 현재 날짜시간 저장
+  
+
+Migrations - model클래스의 변경사항을 DB에 최종 반영
+  1. model class 설계도 초안
+            | python manage.py makemigrations
+  2. migration   최종설계도
+            | python manage.py migrate
+  3. dq.sqlite3  DB
+
+model class 에 변경사항이 생겼다면
+반드시 새로운 설계도 생성 후
+DB에 반영 
+이전 설계도를 지우는 건 XX 
+
+python manage.py createsuperuser == 관리자 생성 계정
+
+DB 초기화
+migration 파일 삭제
+db.sqlite3 파일 삭제
+
+python manage.py showmigrations 
+- migrations 파일들이 migrate가 됐는지 아닌지 여부 확인 X가 체크 의미 
+python manage.py sqlmigrate articles 0001 
+- 어떻게 번역되어 DB에 전달되는지 확인  
