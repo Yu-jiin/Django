@@ -180,6 +180,58 @@ python manage.py sqlmigrate articles 0001
 pip install ipython - 파이썬 더 쉽게 하게끔 도와주는 
 pip install django-extensions - DB할라면 이거 꼭 설치
 
+setting.py INSTALLED_APPS에 django_extension 꼭 추가 쉼표도 잊지마ㅏ
+INSTALLED_APPS = [
+    'articles',
+    'django_extensions',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+
+python manage.py shell_plus       - 파이썬 shell 환경 ON
+
+1. CREATE 생성 
+    1. 데이터 객체 생성하는 첫 번째 방법
+    그러면 shell terminal 켜지면서
+    article = Article()         - Article class로부터 article instance 생성
+    article.title = 'first'     - 인스턴스 변수 title에 값 할당
+    article.content = 'django!' - 인스턴스 변수 content에 값 할당
+    Article.objects.all()       - 그냥 내가 쓴거 보여주는 고 
+    여기서 저장을 꼬옥 해줘야함 아니면 Article.objects.all() 입력해도 아무것도 출력안됨
+    article.save()              - 저장해주기
+    article                     - 이제 입력하면 출력값 -> Out[9]: <Article: Article object (1)> 1은 PK
+    article.pk                  - 이제 id값이 생성되어 1 출력
+        | 
+        실제 table에는 pk가 아닌 id로 입력되어있음
+
+    2. 데이터 객체 생성하는 두 번째 방법
+    article = Article(title='second', content='django!')    - 한번에 합쳐주기
+    article.save()              - 이거도 꼭 저장은 해줘야함 !! 
+
+    3. 데이터 객체 생성하는 세 번째 방법
+    # 위 2가지 방법과 달리 바로 저장이후 바로 생성된 데이터가 반환
+    Article.objects.create(title='third', content='django!')
+
+2. READ 조회
+    Return new QuerySets
+        1. all()        - 전체 조회 메서드
+            - Article.objects.all()
+        2. filter()     - 조회할 때 조건 걸어주기
+            - Article.objects.filter(content='django!')
+            - Article.objects.filter(title='first')
+            - Article.objects.filter(title='abc')   - 없으면 <QuerySet []>로 출력
+
+        
+
+    
+    Do not return QuerySets
+        1. get()        - QuerySet이 아닌 단일 객체 조회
+
+
 ORM - 객체지향 프로그래밍 언어를 사용하여 호환되지 않는 유형간의 시스템간 데이터 변환 기술 
 
 Article.objects.all()       - QuerySet API 구문
@@ -197,5 +249,5 @@ QuerySet API    - DB의 데이터를 저장 조회 수정 삭제 하는 것 CRUD
                 - Create Read Update Delete
 
 
-    1. CREATE 생성 
+    
 
