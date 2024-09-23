@@ -220,11 +220,18 @@ python manage.py shell_plus       - 파이썬 shell 환경 ON
     Return new QuerySets
         1. all()        - 전체 조회 메서드
             - Article.objects.all()
+            - article.title()
         2. filter()     - 조회할 때 조건 걸어주기
             - Article.objects.filter(content='django!')
             - Article.objects.filter(title='first')
             - Article.objects.filter(title='abc')   - 없으면 <QuerySet []>로 출력
             - article
+
+            + filter(), exclude(), get()
+                - Article.objects.filter(content__contains='dja')
+                  내용에 dja가 포함된 모든 게시물 조회
+                - Article.objects.filter(title__startswith='he')
+                  제목이 he로 시작하는 모든 게시물 조회 
         
     Do not return QuerySets
         1. get()        - QuerySet이 아닌 단일 객체 조회
@@ -286,7 +293,6 @@ QuerySet    - DB에게서 전달받은 객체 목록 (순회가능한 1개 이�
 QuerySet API    - DB의 데이터를 저장 조회 수정 삭제 하는 것 CRUD 
                 - Create Read Update Delete
 
+django queryset api 구글에 이거 치고 맨 상단 두개의 공식문서 확인 
 
-
-    
-
+Field lookups - gt 이상, gte 초과, lt 이하, lte 미만, contains, startswith
