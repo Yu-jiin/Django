@@ -13,3 +13,4 @@ urlpatterns = [
     path('<int:pk>/update/',views.update, name='update'),
 ]
 
+
