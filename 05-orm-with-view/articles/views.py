@@ -25,8 +25,8 @@ def new(request):
 
 def create(request):
     # 1. 사용자 요청으로부터 입력 데이터 추출
-    title = request.GET.get('title')
-    content = request.GET.get('content')
+    title = request.POST.get('title')
+    content = request.POST.get('content')
 
     # 1번과 2번이 동일하다만, 1번은 너무 길기에 2번 사용
     # # 저장 1

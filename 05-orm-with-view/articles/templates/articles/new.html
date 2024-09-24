@@ -7,8 +7,9 @@
 </head>
 <body>
 
-  <h1>게시글 작성</h1>
-  <form action="{% url "articles:create" %}" method="GET">
+  <h1>NEW</h1>
+  <form action="{% url "articles:create" %}" method="POST">
+    {% csrf_token %}
     <input type="text" name="title">
     <br>
     <textarea name="content" id=""></textarea>
