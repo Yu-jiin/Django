@@ -84,3 +84,4 @@ def update(request, pk):
     article.save()
 
     return redirect('articles:detail', article.pk)
+
