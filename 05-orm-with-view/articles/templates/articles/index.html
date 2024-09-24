@@ -7,6 +7,8 @@
 </head>
 <body>
   <h1>Articles</h1>
+  <a href="{% url "articles:new" %}">NEW</a>
+  <hr>
   {% comment %} <p>{{ articles }}</p> {% endcomment %}
   {% for article in articles %}
     <p>글 번호: {{ article.pk }}</p>
