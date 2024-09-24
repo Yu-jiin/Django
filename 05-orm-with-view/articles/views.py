@@ -10,3 +10,11 @@ def index(request):
         'articles': articles,
     }
     return render(request, 'articles/index.html', context)
+
+def detail(request, pk):
+    # url로부터 전달받은 pk를 활용해 데이터를 조회
+    article = Article.objects.get(pk=pk)
+    context = {
+        'article' : article,
+    }
+    return render(request, 'articles/detail.html', context)
