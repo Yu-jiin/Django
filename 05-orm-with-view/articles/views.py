@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # 모델 클래스 가져오기
 from .models import Article
 
@@ -46,4 +46,41 @@ def create(request):
 
     # 2. 추출한 입력데이터를 활용해 DB에 저장 요청
 
-    return render(request, 'articles/create.html')
+    return redirect('articles:detail', article.pk)
+
+def delete(request, pk):
+    # 게시글 삭제할 지 조회
+    article = Article.objects.get(pk=pk)
+
+    # 조회한 게시글 삭제
+    article.delete()
+
+    return redirect('articles:index')
+
+
+def edit(request,pk):
+    # 게시물 수정할 거 조회
+    article = Article.objects.get(pk=pk)
+    context = {
+        'article' : article,
+    }
+
+    return render(request, 'articles/edit.html', context)
+
+def update(request, pk):
+
+    # 게시글 수정할 거 조회
+    article = Article.objects.get(pk=pk)
+
+    # 사용자로부터 받은 새로운 입력 데이터 추출
+    title = request.POST.get('title')
+    content = request.POST.get('content')
+
+    # 기존 게시글 수정 
+    article.title = title
+    article.content = content
+
+    # 저장
+    article.save()
+
+    return redirect('articles:detail', article.pk)

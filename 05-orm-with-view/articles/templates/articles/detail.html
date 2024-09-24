@@ -7,7 +7,7 @@
 </head>
 <body>
   <h1>Detail</h1>
-  <p>{{article}}</p>
+  {% comment %} <p>{{article}}</p> {% endcomment %}
   <h3>{{article.pk}}번째 글</h3>
   <hr>
   <p>제목 : {{article.title}}</p>
@@ -15,7 +15,11 @@
   <p>작정일 : {{article.created_at}}</p>
   <p>수정일 : {{article.updated_at}}</p>
   <hr>
-
+  {% comment %} a 태그는 POST 불간 {% endcomment %}
+  <form action="{% url "articles:delete" article.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="DELETE">
+  </form>
   <a href="{% url "articles:index" %}">[back]</a>
 
 </body>
