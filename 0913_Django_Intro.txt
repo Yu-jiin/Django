@@ -329,3 +329,14 @@ HTTP response status code ex) 404, 403, 200-성공
 
 캐시 Cache - 데이터 임시로 저장하는 메모리, 디스크 공간
            - 이전에 접근한 데이터를 빠르게 검색하고 접근할 수 있음 
+
+----------------------------------------------------------------------------------
+
+Form  - 유효한 데이터인지에 대한 확인이 필요
+      - Django가 제공하는 Form 사용하면 직접 개발 안해도 됨 !! 
+
+from django import forms
+
+class ArticleForm(forms.Form):
+    title = forms.CharField(max_length=10)
+
