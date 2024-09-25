@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 # 모델 클래스 가져오기
 from .models import Article
+from .forms import ArticleForm
 
 # Create your views here.
 def index(request):
@@ -23,8 +24,12 @@ def detail(request, pk):
 
 
 def new(request):
+    form = ArticleForm()
+    context = {
+        'form': form,
+    }
     # 게시글 작성 페이지 응답
-    return render(request, 'articles/new.html')
+    return render(request, 'articles/new.html', context)
 
 
 def create(request):

@@ -335,8 +335,28 @@ HTTP response status code ex) 404, 403, 200-성공
 Form  - 유효한 데이터인지에 대한 확인이 필요
       - Django가 제공하는 Form 사용하면 직접 개발 안해도 됨 !! 
 
+app 밑에 forms.py 생성하고 
+
 from django import forms
 
 class ArticleForm(forms.Form):
     title = forms.CharField(max_length=10)
 
+
+from .forms import ArticleForm
+
+def new(request):
+    form = ArticleForm()
+    context = {
+        'form': form,
+    }
+    # 게시글 작성 페이지 응답
+    return render(request, 'articles/new.html', context) // views.py
+
+{{form.as_p}} -> 이거 하나만 있으면 바ㅏ로 {{form}}
+  as_p = 한줄 띄우기 
+  as_div
+  as_ul
+  as_table
+
+  
