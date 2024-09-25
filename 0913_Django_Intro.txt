@@ -359,4 +359,18 @@ def new(request):
   as_ul
   as_table
 
-  
+  class ArticleForm(forms.Form):
+    title = forms.CharField(max_length=10)
+    content = forms.CharField(widget=forms.Textarea)
+
+    widget 붙이면 textarea로 가능 !! 
+
+Form      - 입력 데이터를 DB에 저장 X ex) 검색, 로그인
+ModelForm - 사용자 입력 데이터를 DB에 저장 ex) 게시글 작성, 회원가입 
+
+ModelForm - Model 과 연결된 Form 자동 생성 기능
+
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = '__all__'
