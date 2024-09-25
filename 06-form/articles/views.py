@@ -33,25 +33,25 @@ def new(request):
 
 
 def create(request):
-    # 1. 사용자 요청으로부터 입력 데이터를 추출
-    title = request.POST.get('title')
-    content = request.POST.get('content')
-
-    # 저장 1
-    # article = Article()
-    # article.title = title
-    # article.content = content
+    # title = request.POST.get('title')
+    # content = request.POST.get('content')
+    # article = Article(title=title, content=content)
     # article.save()
 
-    # 저장 2 
-    article = Article(title=title, content=content)
-    article.save()
+    # 모델 폼 인스턴스 생성(사용자 입력 데이터 통째)
+    form = ArticleForm(request.POST)
+    # 유효성 검사
+    if form.is_valid():     # -> return 값 = T or F 
+        article = form.save()
+        return redirect('articles:detail', article.pk)
+    
+    context = {
+        'form' : form,
+    }
+    return render(request, 'articles/new.html', context)
+    
 
-    # 저장 3
-    # Article.objects.create(title=title, content=content)
 
-    # return redirect('articles:index')
-    return redirect('articles:detail', article.pk)
 
 
 def delete(request, pk):
