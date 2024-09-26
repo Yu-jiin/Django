@@ -406,3 +406,32 @@ def create(request):
   ----------------------------------------------------------
 
 app폴더/static/articles/img.png = static files 기본 경로
+
+  정적 파일 img 제공 
+
+  STATIC_URL = 'static/'
+  STATICFILES_DIRS = [
+      BASE_DIR / 'static',
+  ]
+
+  <img src="{% static "articles/sample-1.png" %}" alt="sample">
+  <img src="{% static "sample-2.png" %}" alt="sample">
+
+
+  Media files img 제공
+  ImageField()  - 문자열 필드 
+  이미지 객체가 DB에 저장되는 것이 아닌 이미지 파일의 경로 문자열이 저장 
+
+  MEDIA_ROOT = BASE_DIR / 'media'
+  MEDIA_URL = 'media/'
+
+  models.py에 추가
+    image = models.ImageField(blank=True)
+    blank=True 속성을 작성하면 빈 문자열도 작성 가능 사진 안올리는 사람 경우 
+
+  image 받을라면
+  pip install pillow
+  python manage.py makemigrations
+  python manage.py migrate
+  pip freeze > requirements.txt
+
