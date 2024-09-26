@@ -41,3 +41,4 @@ class ArticleForm(forms.ModelForm):
         model = Article
         fields = '__all__'
         
+    # error_messages 채우기 
