@@ -457,3 +457,9 @@ app폴더/static/articles/img.png = static files 기본 경로
         'form' : form,
     }
     return render(request, 'articles/create.html', context)
+
+  model image field에 추가 
+    upload_to='%Y/%m/%d/'
+    upload_to='파일이름/'
+  
+  form = ArticleForm(request.POST, request.FILES) files 는 무조근 두번 째

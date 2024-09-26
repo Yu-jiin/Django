@@ -6,7 +6,9 @@
   <title>Document</title>
 </head>
 <body>
-  <img src="{{article.image.url}}" alt="img">
+  {% if article.image %}
+    <img src="{{article.image.url}}" alt="img">
+  {% endif %}
   <h1>Detail</h1>
   <h3>{{ article.pk }}번째 글</h3>
   <hr>
