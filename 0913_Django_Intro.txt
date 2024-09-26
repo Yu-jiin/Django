@@ -435,3 +435,25 @@ app폴더/static/articles/img.png = static files 기본 경로
   python manage.py migrate
   pip freeze > requirements.txt
 
+  create.html
+  <form action="{% url "articles:create" %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+
+  views.py
+  def create(request):
+    # 요청 메서드가 POST 일 때
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            article = form.save()
+            return redirect('articles:detail', article.pk)
+    # 요청 메서드가 POST가 아닐 때 GET PUT DELETE
+    else:
+        form = ArticleForm()
+    context = {
+        'form' : form,
+    }
+    return render(request, 'articles/create.html', context)
