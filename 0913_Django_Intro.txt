@@ -402,3 +402,7 @@ def create(request):
     'form' : form,
   }
   return render(request, 'articles/new.html', context)
+
+  ----------------------------------------------------------
+
+app폴더/static/articles/img.png = static files 기본 경로
