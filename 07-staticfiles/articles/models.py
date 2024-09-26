@@ -8,3 +8,4 @@ class Article(models.Model):
     # blank=True 속성을 작성하면 빈 문자열도 작성 가능 사진 안올리는 사람 경우 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
