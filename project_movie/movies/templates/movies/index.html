@@ -5,19 +5,28 @@
 <div class='container justify-content-center'>
   <h3>메인 페이지</h3>
   <div class="row">
-    <div class="col-sm-6 mb-3 mb-sm-0">
-      {% for movie in movies %}
-      <div class="card">
+    {% for movie in movies %}
+    <div class="col-6">
+      <div class="card d-flex flex-column">
         <div class="card-header">
           {{movie.title}}
         </div>
-        <div class="card-body">
+        <div class="card-body flex-grow-1">
           <p class="card-text">{{movie.content}}</p>
-          <a href="{% url "movies:detail" %}" class="btn btn-primary">Detail</a>
+          <div class="mt-auto">
+            <a href="{% url "movies:detail" movie.pk %}" class="btn btn-primary">Detail</a>
+          </div>
         </div>
       </div>
-      {% endfor %}
     </div>
+    
+    {% endfor %}
   </div>
 </div>
+
+<style>
+  .card {
+    height: 100%;
+  }
+  </style>
 {% endblock content %}

@@ -2,6 +2,25 @@
 {% block content %}
 <div class='container justify-content-center'>
 <h1>영화 상세 페이지</h1>
-<img src="" alt="">
+  <img src="{{movie.images.url}}" alt="영화 이미지" style='width: 300px'> <br>
+  {{movie.title}} <br>
+  {{movie.content}} <br>
+  <hr>
+  <div class='row'>
+    <div class='col-2'>
+      <form action="{% url "movies:update" movie.pk %}">
+        <input type="submit" value='UPDATE' class='btn btn-secondary'>
+      </form>
+    </div>
+    <div class='col-1'>
+      <form action="{% url "movies:delete" movie.pk%}">
+        <input type="submit" value='DELETE' class='btn btn-danger'>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <form action="{% url "movies:index" %}">
+    <input type="submit" value ='BACK' class='btn btn-primary'>
+  </form>
 </div>
 {% endblock content %}
