@@ -33,3 +33,11 @@ def index(request):
     }
 
     return render(request, 'firsts/index.html', context)
+
+def example(request):
+    # 1. csv 파일 읽기 pandas
+    # 2. DB에 저장
+    #   - 중복된 데이터 저장 X 
+
+
+    return render()
