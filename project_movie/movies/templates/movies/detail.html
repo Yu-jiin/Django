@@ -2,7 +2,9 @@
 {% block content %}
 <div class='container justify-content-center'>
 <h1>영화 상세 페이지</h1>
-  <img src="{{movie.images.url}}" alt="영화 이미지" style='width: 300px'> <br>
+{% if movie.images %}
+<img src="{{movie.images.url}}" alt="영화 이미지" style='width: 300px'> <br>
+{% endif %}
   {{movie.title}} <br>
   {{movie.content}} <br>
   <hr>
