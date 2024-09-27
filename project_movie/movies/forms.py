@@ -15,7 +15,8 @@ class MovieForm(forms.ModelForm):
         error_messages={'required' : '내용을 입력해주세요'}
     )
     images = forms.ImageField(
-        label='Movie image'
+        label='Movie image',
+        required=False
     )
     class Meta:
         model = Movie

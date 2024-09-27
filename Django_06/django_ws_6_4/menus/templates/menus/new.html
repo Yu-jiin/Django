@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container justify-content-center">
+  <h1>메뉴 생성 페이지</h1>
+  <form action='{% url "menus:create" %}' method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="CREATE" class='btn btn-primary'>
+  </form>
+  <a href="{% url 'menus:index' %}">[BACK]</a>
+</div>
+{% endblock content %}

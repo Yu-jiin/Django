@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>식당 수정 페이지</h1>
+  <form action="{% url 'restaurants:update' restaurant.pk %}" method="POST">
+    {% csrf_token %}
+    식당 이름 : <input type="text" id="name" name="name" value="{{restaurant.name}}"> <br>
+    식당 설명 : <input type="text" id="description" name="description" value="{{restaurant.description}}"> <br>
+    식당 주소 : <textarea name="address" id="address" cols="30" rows="10">{{restaurant.address}}</textarea> <br>
+    식당 전화번호 <textarea name="phone_number" id="phone_number" cols="30" rows="10">{{restaurant.phone_number}}</textarea> <br>
+
+    <input type="submit" value="UPDATE">
+  </form>
+  <a href="{% url 'restaurants:index' %}">[BACK]</a>
+{% endblock content %}
