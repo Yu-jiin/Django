@@ -58,6 +58,9 @@ def example(request):
         )
         weather.save()
 
+    weathers = Weather.objects.all()
+    context = {
+        'weathers': weathers,
+    }
 
-
-    return render()
+    return render(request, 'firsts/example.html', context)
