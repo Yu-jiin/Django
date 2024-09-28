@@ -58,4 +58,6 @@ $ python manage.py startapp my_app
 - 이건.. 프로젝트랑 완전 별개 폴더이다.
   > 프로젝트가 방금 만들어진 app의 존재를 알리가 없음 .
   > settings.py의 INSTALLED_APPS에 'my_app' 등록해야함 !!!
+  >
+  > 
 
