@@ -1,0 +1,11 @@
+ORM, QuerySet API 사용하는 이유
+    1. 데이터베이스 추상화
+    2. 생산성 향상
+    3. 객체 지향적 접근 
+
+Form class 정의
+from django import forms
+
+class ArticleForm(forms.form):
+    title = forms.CharField(max_length=10)
+    content = forms.CharField()
