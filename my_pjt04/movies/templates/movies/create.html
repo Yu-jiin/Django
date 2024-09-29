@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% load static %}
+{% comment %} <img src="{% static "movies/sample-1.png" %}" alt =""> {% endcomment %}
 <form action="{% url "movies:create" %}" method='POST' enctype='multipart/form-data'>
     {% csrf_token %}
     {{form.as_p}}

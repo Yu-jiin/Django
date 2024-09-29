@@ -21,7 +21,7 @@ def create(request):
         form = MovieForm()
     context = {
         'form' : form,
-    }
+    } 
     return render(request, 'movies/create.html', context)
 
 def detail(request, pk):
