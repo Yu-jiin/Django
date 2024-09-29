@@ -9,3 +9,64 @@ from django import forms
 class ArticleForm(forms.form):
     title = forms.CharField(max_length=10)
     content = forms.CharField()
+    class Meta:
+        model = Article
+        fields = '__all__'
+    
+    꾸밀라면
+from django import forms
+from .models import Movie
+
+
+class MovieForm(forms.ModelForm):
+    title = forms.CharField(
+        label='Title',
+        widget=forms.TextInput(
+        ),
+    )
+    content = forms.CharField(
+        label='Description',
+        widget=forms.Textarea(
+        ),
+        error_messages={'required' : '내용을 입력해주세요'}
+    )
+    images = forms.ImageField(
+        label='Movie image',
+        required=False
+    )
+    class Meta:
+        model = Movie
+        fields = '__all__'
+
+views 함수
+from .forms import ArticleForm
+
+def create(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            article = form.save()
+            return redirect('articles:index', article.pk)
+    else:
+        form = ArticleForm()    
+    context = {
+        'form' : form,
+    }
+    return render(request, 'articles/create.html', context)
+
+def update(request, pk):
+    article = Article.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, instance = article)
+        if form.is_valid():
+            article = form.save()
+            return redirect('articles:detail', article.pk)
+    else:
+        form = ArticleForm(instance = article)
+    context = {
+        'form' : form,
+        'article' : article,
+    }
+    return render(request, 'aricles/update.html, context)
+
+
