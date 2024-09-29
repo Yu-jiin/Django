@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+<h1>Index.html</h1>
+{% for movie in movies %}
+    제목 : {{movie.title}}
+    설명 : {{movie.description}}
+    <form action="#">
+        <input type="submit" value = "Detail">
+    </form>
+    <hr>
+{% endfor %}
+
+
+</div>
+
+{% endblock content %}
