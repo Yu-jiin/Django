@@ -69,4 +69,15 @@ def update(request, pk):
     }
     return render(request, 'aricles/update.html, context)
 
+setting.py
 
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'media/'
+
+urls.py
+from django.conf import settings
+from django.conf.urls.static import static
