@@ -23,4 +23,15 @@ def create(request):
         'form' : form,
     }
     return render(request, 'movies/create.html', context)
-    
+
+def detail(request, pk):
+    movie = Movie.objects.get(pk=pk)
+    context = {
+        'movie' : movie,
+    }
+    return render(request, 'movies/detail.html', context)
+
+def delete(request, pk):
+    movie = Movie.objects.get(pk=pk)
+    movie.delete()
+    return redirect('movies:index')
