@@ -69,3 +69,11 @@ admin.site.register(User, UserAdmin)
 
 settings.py 맨 밑에
 AUTH_USER_MODEL = 'accounts.USER'
+
+그러고 나서 DB생성 migrate
+
+
+----------------------------------------------------------------
+
+Login인 session create 하는 과정
+AuthenticationForm()        - built in form 존재
