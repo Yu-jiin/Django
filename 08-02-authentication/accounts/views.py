@@ -38,3 +38,9 @@ def signup(request):
     }
     return render(request, 'accounts/signup.html', context)
 
+
+def delete(request):
+    # 누가 회원탈퇴를 요청한건지 User 모델에서  검색할 필요 X
+    request.user.delete()
+
+    return redirect('articles:index')
