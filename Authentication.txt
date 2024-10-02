@@ -77,3 +77,6 @@ AUTH_USER_MODEL = 'accounts.USER'
 
 Login인 session create 하는 과정
 AuthenticationForm()        - built in form 존재
+
+
+UserCreationForm()          - 빌트인 ModelForm
