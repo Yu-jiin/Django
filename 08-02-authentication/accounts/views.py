@@ -48,10 +48,14 @@ def delete(request):
 
 def update(request):
     if request.method == 'POST':
-        form = CustomUserChangeForm(request.POST, )
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('articles:index')
     else:
         form = CustomUserChangeForm(instance=request.user)
     context = {
         'form' : form,
     }
     return render(request, 'accounts/update.html', context)
+
