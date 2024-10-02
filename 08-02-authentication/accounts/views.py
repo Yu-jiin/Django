@@ -4,9 +4,13 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('articles:index')
+
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
@@ -20,12 +24,16 @@ def login(request):
     return render(request, 'accounts/login.html', context)
 
 
+@login_required
 def logout(request):
     auth_logout(request)
     return redirect('articles:index')
 
 
 def signup(request):
+    if request.user.is_authenticated:
+        return redirect('artices:index')
+
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -39,6 +47,7 @@ def signup(request):
     return render(request, 'accounts/signup.html', context)
 
 
+@login_required
 def delete(request):
     # 누가 회원탈퇴를 요청한건지 User 모델에서  검색할 필요 X
     request.user.delete()
@@ -46,6 +55,7 @@ def delete(request):
     return redirect('articles:index')
 
 
+@login_required
 def update(request):
     if request.method == 'POST':
         form = CustomUserChangeForm(request.POST, instance=request.user)
@@ -60,6 +70,7 @@ def update(request):
     return render(request, 'accounts/update.html', context)
 
 
+@login_required
 def change_password(request, user_pk):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)

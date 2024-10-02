@@ -80,3 +80,9 @@ AuthenticationForm()        - built in form 존재
 
 
 UserCreationForm()          - 빌트인 ModelForm
+ 
+is_authenticate             - 사용자가 인증 되었는지의 여부
+                            - 로그인 한 사용자는 True 비로그인은 False
+
+from django.contrib.auth.decorators import login_required
+                            - 인증된 사용자만 가능한 것 
