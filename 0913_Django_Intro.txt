@@ -464,3 +464,5 @@ app폴더/static/articles/img.png = static files 기본 경로
     upload_to='파일이름/'
   
   form = ArticleForm(request.POST, request.FILES) files 는 무조근 두번 째
+
+  update_session_auth_hash(request, user)
