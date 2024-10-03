@@ -30,6 +30,8 @@ def logout(request):
     return redirect('accounts:index')
 
 
+# 버튼 누르면 점수 증가 / 내림차순 정렬 
+
 def score(request, pk):
     user = User.objects.get(pk=pk)
     if request.method == 'POST':
