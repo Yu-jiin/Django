@@ -7,3 +7,7 @@ git switch <브랜치이름>                 - 브랜치 목록 확인
 git switch -c <브랜치이름> <commit ID>  - 새로운 브런치 생성   
 
 
+git branch jiin
+git switch jiin
+git log -- online
+git merge jiin
