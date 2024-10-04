@@ -1,0 +1,7 @@
+git branch                             - 브랜치 목록 확인
+git branch -r                          - 원격저장소 브랜치 목록 확인
+git branch <브랜치이름>                 - 새로운 브랜치 생성
+git branch -d <브랜치이름>              - 브랜치 삭제(병합된 브랜치만)
+git bracn - D <브랜치이름>              - 브랜치 강제 삭제
+git switch <브랜치이름>                 - 브랜치 목록 확인
+git switch -c <브랜치이름> <commit ID>  - 새로운 브런치 생성   
