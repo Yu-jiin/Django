@@ -10,6 +10,7 @@
     <nav class="nav bg-dark">
       <a class="nav-link text-light lead" aria-current="page" href="{% url "movies:index" %}">My Movie</a>
       <a class="nav-link text-white-50" href="{% url "movies:index" %}">INDEX</a>
+      {% if  %}{% endif %}
       <a class="nav-link text-white-50" href="{% url "movies:create" %}">CREATE</a>
     </nav>
     {% block content %}

@@ -3,4 +3,18 @@
 {% block content %}
 
 <h1>메인 페이지</h1>
+
+<form action="{% url "crawlings:index" %}" method='POST'>
+    {% csrf_token %}
+    <label for="query"> 검색어 : </label>
+    <input type="text" id='query', name='query'>
+    <input type="submit" value='검색하기'>
+</form>
+
+{% for result in results %}
+<p>
+    {{forloop.counter}}
+    {{result.title}}</p>
+{% endfor %}
+
 {% endblock content %}

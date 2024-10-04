@@ -50,3 +50,4 @@ def delete(request, pk):
     movie = Movie.objects.get(pk=pk)
     movie.delete()
     return redirect('movies:index')
+
