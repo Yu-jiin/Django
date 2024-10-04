@@ -5,3 +5,5 @@ git branch -d <브랜치이름>              - 브랜치 삭제(병합된 브랜
 git bracn - D <브랜치이름>              - 브랜치 강제 삭제
 git switch <브랜치이름>                 - 브랜치 목록 확인
 git switch -c <브랜치이름> <commit ID>  - 새로운 브런치 생성   
+
+
