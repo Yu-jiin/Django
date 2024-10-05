@@ -1,4 +1,4 @@
-Django
+Django !! 진짜 재밌다 ㅎㅎ 
 
 1. django 시작하기
 
