@@ -108,6 +108,7 @@ while game_data is not None:
         output = 'D A'
     else:
         output = 'R A'
+        
 
 
     # while 문의 끝에는 다음 코드가 필수로 존재하여야 함
