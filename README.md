@@ -1,4 +1,5 @@
 Django !! 진짜 재밌다 ㅎㅎ 
+배틀싸피 done 
 
 1. django 시작하기
 
