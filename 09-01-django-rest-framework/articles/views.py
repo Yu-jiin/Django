@@ -41,6 +41,7 @@ def article_detail(request, article_pk):
     
     # 수정 
     elif request.method == 'PUT':
+        # partial - 부분 업데이트 허용 
         serializer = ArticleSerializer(article, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
