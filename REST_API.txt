@@ -43,3 +43,4 @@ Serialization   - 직렬화
     - 여러 시스템에서 활용하기 위해 데이터 구조나 객체를 재구성할 수 있는 포맷으로 변환
 
 ModelSerializer - Django모델과 연결된 Serializer 클래스
+
