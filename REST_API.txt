@@ -1,0 +1,30 @@
+REST
+    - API Server를 개발하기 위한 일종의 SW 설계방법론
+    - 규칙 X 
+    - 자원을 정의하고 자원에 대한 주소를 지정하는 전반적인 방법 서술 
+
+REST API(RESTful API)
+    - REST라는 설계 디자인 약속을 지켜 구현한 API
+    - 어느 정도 약속 만들어서 다같이 쓰쟈 !
+
+REST에서 자원을 정의하고 주소를 지정하는 방법
+    - 자원의 "식별"     URL
+    - 자원의 "행위"     HTTP Methods
+    - 자원의 "표현"     JSON 데이터 
+
+URI     - 인터넷에서 리소스(자원)을 식별하는 문자열
+URL     - 웹에서 주어진 리소스의 주소 
+
+대표 HTTP Request Methods
+1. GET      - 서버에 리소스 요청, 검색만
+2. POST     - 데이터에 지정된 리소스 제출, 서버상태 변경
+3. PUT      - 요청한 주소의 리소스 수정
+4. DELETE   - 지정된 리소스 삭제
+
+
+views.py
+@api_view()
+def article_json(request):
+    articles = Article.objects.all()
+    serializer = ArticleSerializer(articles, many=True)
+    return Response(serializer.data)
