@@ -2,8 +2,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 
-from .models import Article
-from .serializers import ArticleListSerializer, ArticleSerializer
+from .models import Article, Comment
+from .serializers import ArticleListSerializer, ArticleSerializer, CommentSerializer
 
 
 @api_view(['GET', 'POST'])
@@ -39,3 +39,10 @@ def article_detail(request, article_pk):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+
+
+@api_view(['GET'])
+def comment_list(request):
+    comments = Comment.objects.all()
+    serializer = CommentSerializer(comments, many=True)
+    return Response(serializer.data)
