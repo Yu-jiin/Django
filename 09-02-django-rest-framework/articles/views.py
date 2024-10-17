@@ -46,3 +46,10 @@ def comment_list(request):
     comments = Comment.objects.all()
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def comment_detail(request, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    serializer = CommentSerializer(comment)
+    return Response(serializer.data)
