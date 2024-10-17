@@ -44,3 +44,11 @@ Serialization   - 직렬화
 
 ModelSerializer - Django모델과 연결된 Serializer 클래스
 
+---------------------------------------------------------
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        # 유효성 검사에서 제외시키고 데이터 조회시에는 출력하는 필드
+        read_only_fields=('article',)

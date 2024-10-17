@@ -48,8 +48,32 @@ def comment_list(request):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
+@api_view(['GET', 'DELETE', 'PUT'])
 def comment_detail(request, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
-    serializer = CommentSerializer(comment)
-    return Response(serializer.data)
+    if request.method == 'GET':
+        serializer = CommentSerializer(comment)
+        return Response(serializer.data)
+    
+    elif request.method == 'DELETE':
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    elif request.method == 'PUT':
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+
+# 댓글 생성
+@api_view(['POST'])
+def comment_create(request, article_pk):
+    article = Article.objects.get(pk=article_pk)
+    # 사용자 입력 데이터를 직렬화
+    serializer = CommentSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+        # 외래키 데이터 입력 후 저장 
+        serializer.save(article=article)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
