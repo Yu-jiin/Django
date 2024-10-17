@@ -75,3 +75,14 @@ REST_FRAMEWORK = {
 }
 
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+
+get_list_or_404   
+    - 존재하지 않는 게시글 조회 시 이전엔 500이지만 현재는 404 응답
+articles = get_list_or_404(Article)
+comments = get_list_or_404(Comment)
+
+get_object_or_404
+    - 해당 객체가 없을 시 DoesNotExist대신 Http404 read_only_fields
+from django.shortcuts imoprt get_object_or_404
+article = get_object_or_404(Article, pk=article_pk)
+comment = get_object_or_404(Comment, pk=comment_pk)
