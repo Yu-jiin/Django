@@ -83,6 +83,6 @@ comments = get_list_or_404(Comment)
 
 get_object_or_404
     - 해당 객체가 없을 시 DoesNotExist대신 Http404 read_only_fields
-from django.shortcuts imoprt get_object_or_404
+from django.shortcuts import get_object_or_404
 article = get_object_or_404(Article, pk=article_pk)
 comment = get_object_or_404(Comment, pk=comment_pk)
