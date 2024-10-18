@@ -1,0 +1,150 @@
+도파민아저씨와 포항피바다의 합작.txt
+
+1. 프로젝트 생성
+레포지토리 만들기(READ.ME 포함)
+이름: git_flow_practice
+프리마켓으로 생성
+클론받기
+
+2. 멤버 초대
+팀원, 강사님 초대
+
+3. VS코드 열기
+code .gitignore
+https://www.toptal.com/developers/gitignore
+py -m venv venv
+source venv/s/a
+pip freeze > requirements.txt
+git branch dev
+git switch dev
+git status <<확인
+git add .
+git commit -m "기본 환경 설정 문서"
+git log --oneline
+
+4. pjt app 만들어서 모델->url->views->html순으로 작업 
+django-admin startproject pjt .
+python manage.py startapp articles
+-> pjt/settings > apps 등록 > model 등록
+py manage.py makemigrations
+py manage.py migrate
+
+
+*APPS -> 'django_extensions', 추가...
+*py manage.py shell_plus 이용가능
+article = Article()
+article.title = 'test'
+article.save()
+exit
+
+
+py manage.py dumpdata --indent=4 articles > articles.json
+mkdir articles/fixtures
+mv articles.json articles/fixtures/
+
+git add .
+git commit -m "__"
+git log --oneline
+git push -u origin dev
+
+
+팀원 --------------------
+
+clone 받아오기 
+  - readme밖에 없는게 정상갈비
+branch 생성갈비
+git branch
+git branch dev
+git switch dev
+
+git pull origin dev 
+
+pull 받았으니 코드 확인갈비
+
+팀원도 python -m venv venv 가상환경 생성갈비
+pip install -r requirements.txt
+
+(accounts기능 만들 사람이라면)
+git branch accounts
+git switch accounts
+
+python manage.py startapp accounts -> 앱 생성 갈비
+settings.py
+  - installed_apps에 accounts 추가갈비
+  - AUTH_USER_MODEL = 'accounts.USER'
+models.py
+  - accounts MODEL 생성갈비
+
+python manage.py createsuperuser 로 admin 계정 만들고
+user 데이터 생성 됐으면
+
+python manage.py dumpdata --indent=4 accounts > users.json
+
+mkdir accounts/fixtures
+
+mv users.json accounts/fixtures
+
+
+git add .
+git commit -m "accounts"
+git push origin accounts
+
+project repo에 가서 merge request 만들기 
+없다면 new merge request 누르고
+accounts -> dev로 가야함 master 아님
+change branch 해서 dev로 바꿔주던가
+
+다시 포항피바다----하는거 기록----------
+git branch settings
+git switch settings
+settings에 [BASE_DIR / 'templates'] 추가하고 저장갈비
+
+git add .
+git commit -m "settings"
+git push origin settings
+
+git pull origin accounts
+
+수정 :wq
+종료 :q
+
+git status (상태 확인)
+git push origin settings
+
+git add .
+git commit -m "settings"
+git push origin settings
+머지하기(delete)
+
+
+~팀장님 진행중~
+git switch dev (세팅 끝나고 디벨롭으로~)
+git pull origin dev
+
+
+git branch articles
+git switch articles
+py manage.py makemigrations -> 1 (마이그레이션 완)
+py manage.py migrate
+py manage.py loaddata users.json (팀원이 만든 유저데이터 다운)
+# py manage.py loaddata articles.json (데이터정보 다운)
+py manage.py shell_plus
+- import os
+- user = User.objects.get(pk=1)
+- article = Article()
+- article.user = user
+- article.title = 'test'
+- article.save()
+- exit()
+
+py manage.y dumpdata --indent=4 articles > articles.json
+-> 만들어진 articles.json 을 fixture에 덮어쓰기로 넣음
+git add .
+git commit -m "user article 1:N"
+git push origin articles
+
+
+
+-------------팀원-------
+
+

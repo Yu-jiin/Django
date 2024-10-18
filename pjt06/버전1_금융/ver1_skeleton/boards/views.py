@@ -36,14 +36,16 @@ def detail(request, pk):
 @require_http_methods(["GET", "POST"])
 def update(request, pk):
     board = get_object_or_404(Board, pk=pk)
-
-    if request.method == 'POST':
-        form = BoardForm(request.POST, instance=board)
-        if form.is_valid():
-            form.save()
-            return redirect('boards:detail', board.pk)
+    if request.user == board.author:
+        if request.method == 'POST':
+            form = BoardForm(request.POST, instance=board)
+            if form.is_valid():
+                form.save()
+                return redirect('boards:detail', board.pk)
+        else:
+            form = BoardForm(instance=board)
     else:
-        form = BoardForm(instance=board)
+        return redirect('boards:index')
     context = {
         'board': board,
         'form': form,
@@ -57,16 +59,23 @@ def create(request):
     if request.method == 'POST':
         form = BoardForm(request.POST)
         if form.is_valid():
-            article = form.save(commit=False)
-            article.author = request.user
-            article.save()
-            return redirect('boards:index')
+            board = form.save(commit=False)
+            board.author = request.user
+            board.save()
+            return redirect('boards:detail', board.pk)
     else:
         form = BoardForm()
     context = {
         'form': form,
     }
     return render(request, 'boards/create.html', context)
+
+@login_required
+def delete(request, pk):
+    board = Board.objects.get(pk=pk)
+    if request.user == board.author:
+        board.delete()
+    return redirect('boards:index')
 
 
 @login_required
@@ -94,12 +103,21 @@ def create_reply(request, comment_pk):
         reply_comment.author = request.user
         reply_comment.parent_comment = comment
         reply_comment.save()
-        return redirect("boards:detail", comment.board.id)
+        return redirect("boards:detail", comment.board.pk)
 
-
+@login_required
 @require_http_methods(["POST"])
 def comment_detail(request, board_pk, comment_pk):
     comment = get_object_or_404(Comment, pk=comment_pk)
-    if request.method == 'POST':
+    if request.user == comment.author:
         comment.delete()
-        return redirect('boards:detail', board_pk)
+    return redirect('boards:detail', board_pk)
+
+@login_required
+def likes(request, board_pk):
+    board = Board.objects.get(pk=board_pk)
+    if request.user in board.like_users.all():
+        board.like_users.remove(request.user)
+    else:
+        board.like_users.add(request.user)
+    return redirect('boards:index')

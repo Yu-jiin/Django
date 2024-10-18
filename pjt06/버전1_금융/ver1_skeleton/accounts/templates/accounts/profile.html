@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <h1 class="mb-4">{{person.username}}님의 프로필 페이지</h1>
+  <div>
+    팔로잉 : {{ person.followings.all|length }} / 팔로워 : {{person.followers.all|length}}
+  </div>
+
+  <div class='mt-4'>
+    <p>회원번호 : {{person.pk}}</p>
+    <p>유저이름 : {{person.username}}</p>
+    <p>가입날짜 : {{person.date_joined}}</p>
+  </div>
+
+  <hr>
+
+  {% if request.user != person %}
+  <div>
+      <form action="{% url "accounts:follow" person.pk %}" method = 'POST'>
+          {% csrf_token %}
+          {% if request.user in person.followers.all %}
+          <input type="submit" value="Unfollow" class='btn btn-light'>
+          {% else %}
+          <input type="submit" value='Follow' class='btn btn-light'>
+          {% endif %}
+      </form>
+  </div>
+  {% endif %}
+</div>
+
+  <div class='mt-4'>
+    <h3>유저가 쓴 글</h3>
+    <div class='bg-light'>
+      <div class=''>
+        {% if person.board_set.all %}
+        {% for board in person.board_set.all %}
+        <p>글 번호 : {{board.pk}}</p>
+        <p>글 제목 : {{board.title}}</p>
+        {% endfor %}
+        {% else %}
+        <p>아직 작성한 게시글이 없습니다.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div>
+    <h3>유저가 쓴 댓글</h3>s
+    <div class='bg-light'>
+      <div class=''>
+        {% if person.comment_set.all %}
+        {% for comment in person.comment_set.all %}
+        <p>글 제목 : {{comment.content}}</p>
+        {% endfor %}
+        {% else %}
+        <p>아직 작성한 댓글이 없습니다.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div>
+    <h3>팔로우</h3>
+    <div class='bg-light'>
+      <div class=''>
+        {% if person.followings.all %}
+          {% for following in person.followings.all %}
+            <p>{{ following.username }}</p>
+          {% endfor %}
+        {% else %}
+          <p>팔로우 한 사람이 없습니다.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+
+{% endblock content %}
