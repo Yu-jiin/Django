@@ -82,50 +82,34 @@ $ python manage.py startapp my_app
    # 또는
    source venv/bin/activate       # Mac/Linux 경우
 필수 패키지 설치
-bash
-코드 복사
 pip freeze > requirements.txt
 브랜치 생성 및 전환
-bash
-코드 복사
 git branch dev
 git switch dev
 변경사항 확인 및 커밋
-bash
-코드 복사
 git status
 git add .
 git commit -m "기본 환경 설정 문서"
 git log --oneline
 4. Django 앱 생성 및 설정
 프로젝트 및 앱 생성
-bash
-코드 복사
 django-admin startproject pjt .
 python manage.py startapp articles
 앱 등록: pjt/settings.py 파일에서 INSTALLED_APPS에 articles 추가
 모델 등록 및 마이그레이션
-bash
-코드 복사
 python manage.py makemigrations
 python manage.py migrate
 Django Extensions 추가: INSTALLED_APPS에 'django_extensions' 추가
 Django 쉘 사용
-bash
-코드 복사
 python manage.py shell_plus
 article = Article(title='test')
 article.save()
 exit()
 데이터 덤프 및 fixtures 설정
-bash
-코드 복사
 python manage.py dumpdata --indent=4 articles > articles.json
 mkdir articles/fixtures
 mv articles.json articles/fixtures/
 변경사항 커밋 및 푸시
-bash
-코드 복사
 git add .
 git commit -m "초기 데이터 추가"
 git push -u origin dev
@@ -134,31 +118,23 @@ git push -u origin dev
 
 git pull origin dev로 최신 코드 가져오기
 가상 환경 설정 및 패키지 설치
-bash
-코드 복사
 python -m venv venv
 pip install -r requirements.txt
 새로운 브랜치 생성
 
 git branch accounts 후 git switch accounts로 이동
 앱 생성 및 설정
-bash
-코드 복사
 python manage.py startapp accounts
 INSTALLED_APPS에 accounts 추가
 AUTH_USER_MODEL 설정
 슈퍼유저 생성 및 데이터 덤프
 
-bash
-코드 복사
 python manage.py createsuperuser
 python manage.py dumpdata --indent=4 accounts > users.json
 mkdir accounts/fixtures
 mv users.json accounts/fixtures/
 변경사항 커밋 및 푸시
 
-bash
-코드 복사
 git add .
 git commit -m "accounts 모델 추가"
 git push origin accounts
@@ -167,26 +143,18 @@ git push origin accounts
 추가 설정 및 작업
 설정 브랜치 생성
 
-bash
-코드 복사
 git branch settings
 git switch settings
 BASE_DIR / 'templates' 추가 후 저장
 변경사항 커밋 및 푸시
-bash
-코드 복사
 git add .
 git commit -m "settings 수정"
 git push origin settings
 다른 브랜치와의 통합
 
-bash
-코드 복사
 git pull origin accounts
 아티클 브랜치 작업
 
-bash
-코드 복사
 git branch articles
 git switch articles
 python manage.py makemigrations
@@ -194,8 +162,6 @@ python manage.py migrate
 python manage.py loaddata users.json
 아티클 생성 및 데이터 덤프
 
-bash
-코드 복사
 python manage.py shell_plus
 user = User.objects.get(pk=1)
 article = Article(user=user, title='test')
@@ -204,8 +170,6 @@ exit()
 python manage.py dumpdata --indent=4 articles > articles.json
 최종 커밋 및 푸시
 
-bash
-코드 복사
 git add .
 git commit -m "user article 1:N 관계 추가"
 git push origin articles
