@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, get_list_or_40
 from .models import Board, Comment
 from .forms import BoardForm, CommentForm
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 @require_http_methods(["GET"])
@@ -47,6 +48,7 @@ def update(request, pk):
     return render(request, 'boards/update.html', context)
 
 @require_http_methods(["GET", "POST"])
+@login_required
 def create(request):
     if request.method == 'POST':
         form = BoardForm(request.POST)

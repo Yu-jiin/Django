@@ -10,7 +10,20 @@
 <body>
   <div class="mt-3 container">
     <div>
-      <a href="{% url "accounts:signup" %}">회원가입</a>
+      <a href="{% url "accounts:signup" %}" class='btn btn-light'>회원가입</a>
+      <a href="{% url "accounts:login" %}" class='btn btn-light'>로그인</a>
+      <form action="{% url "accounts:logout" %}" method='POST'>
+        {% csrf_token %}
+        <button class='btn btn-light'>로그아웃</button>
+      </form>
+    </div>
+   
+    <div>
+      {% if user.is_authenticated %}
+        <h3>안녀엉 {{user}} !!</h3>
+      {% else %}
+        <h3>로그인 해주세요. </h3>
+      {% endif %}
     </div>
     <div class="mt-3 mb-4">
       {% include '_navbar.html' %}
