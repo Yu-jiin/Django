@@ -1,5 +1,6 @@
 Django !!  
 배틀싸피 done 
+프젝빡시다 
 
 1. django 시작하기
 
