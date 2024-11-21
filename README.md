@@ -1,7 +1,6 @@
 Django !!  
 배틀싸피 done 
-프젝빡시다 
-쉬발 못해먹겠네
+
 1. django 시작하기
 
 ```bash
