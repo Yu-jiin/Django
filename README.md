@@ -1,5 +1,5 @@
 Django !!  
-배틀싸피 done 
+배틀싸피 done  !!
 
 1. django 시작하기
 
