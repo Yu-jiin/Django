@@ -1,4 +1,4 @@
-Django !!  
+Django !!  .
 
 배틀싸피 done  !!~!
 
